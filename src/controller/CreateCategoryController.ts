@@ -1,18 +1,17 @@
 import { Request, Response } from "express"
-import { CreateTodoService } from "../services/CreateTodoService"
+import { CreateCategoryService } from "../services/CreateCategoryService"
 
 export class CreateCategoryController {
     async handle(req: Request, res: Response) {
-        const { title, description, data_limit } = req.body;
+        const { category, todo_sender } = req.body;
 
-        const createTodoService = new CreateTodoService();
+        const createTodoService = new CreateCategoryService();
 
         const todo = await createTodoService.execute({ 
-            title,
-            description,
-            data_limit
+            category,
+            todo_sender
         })
-
+        
         return res.json(todo);
     }
 }

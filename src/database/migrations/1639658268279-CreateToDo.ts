@@ -10,7 +10,7 @@ export class CreateToDo1639658268279 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        isPrimary: true
+                        isPrimary: true,
                     },
                     {
                         name: "title",

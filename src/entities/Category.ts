@@ -1,5 +1,6 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, OneToMany, ManyToOne} from "typeorm";
 import { Todo } from "./Todo";
+import { v4 as uuid} from "uuid";
 
 @Entity("categories")
 export class Category {
@@ -14,7 +15,7 @@ export class Category {
     todo_sender: string
 
     @JoinColumn({name: "todo_sender"})
-    @OneToMany(() => Todo, todo => todo.id)
+    @OneToMany(() => Todo, todo => todo.title)
     todo: Todo
     
     @CreateDateColumn()
@@ -22,4 +23,10 @@ export class Category {
 
     @UpdateDateColumn()
     updated_at: Date
+
+    constructor() {
+        if(!this.id) {
+            this.id = uuid();
+        }
+    }
 }

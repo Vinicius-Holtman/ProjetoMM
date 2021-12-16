@@ -10,4 +10,7 @@ const createTodoController = new CreateTodoController()
 router.post("/category", createCategoryController.handle);
 router.post("/todo", createTodoController.handle);
 
+router.get("/todo", createTodoController.handle);
+router.get("/todo", createTodoController.handle);
+
 export { router }
