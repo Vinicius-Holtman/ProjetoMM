@@ -10,4 +10,4 @@ app.use(express.json())
 
 app.use(router)
 
-app.listen(4040, () => console.log('server only. PORT:4040'))
+app.listen(4040, () => console.log('Server is runnning, port: 4040'))
