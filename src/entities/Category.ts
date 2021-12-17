@@ -11,12 +11,12 @@ export class Category {
     @Column()
     category: string
     
-    @Column()
-    todo_sender: string
+    // @Column()
+    // todo_sender: string
 
-    @JoinColumn({name: "todo_sender"})
-    @OneToMany(() => Todo, todo => todo.title)
-    todo: Todo
+    // @JoinColumn({name: "todo_sender"})
+    // @OneToMany(() => Todo, todo => todo.title)
+    // todo: Todo
     
     @CreateDateColumn()
     created_at: Date

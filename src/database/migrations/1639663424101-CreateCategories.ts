@@ -17,10 +17,10 @@ export class CreateCategories1639663424101 implements MigrationInterface {
                         type: "varchar",
                         isUnique: true
                     },
-                    {
-                        name: "todo_sender",
-                        type: "uuid"
-                    },
+                    // {
+                    //     name: "todo_sender",
+                    //     type: "uuid"
+                    // },
                     {
                         name: "created_at",
                         type: "timestamp",
@@ -31,17 +31,17 @@ export class CreateCategories1639663424101 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()"
                     }
-                ],
-                foreignKeys: [
-                    { 
-                       name: "FKToDoCategories",
-                       referencedTableName: "todo",
-                       referencedColumnNames: ["id"],
-                       columnNames: ["todo_sender"],
-                       onDelete: "SET NULL",
-                       onUpdate: "SET NULL"
-                    }
-                ]
+                ]//,
+                // foreignKeys: [
+                //     { 
+                //        name: "FKToDoCategories",
+                //        referencedTableName: "todo",
+                //        referencedColumnNames: ["id"],
+                //        columnNames: ["todo_sender"],
+                //        onDelete: "SET NULL",
+                //        onUpdate: "SET NULL"
+                //     }
+                // ]
             })
         )
     }

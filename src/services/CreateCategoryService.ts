@@ -2,17 +2,15 @@ import { getCustomRepository } from "typeorm";
 import { CategoryRepositories } from "../repositories/CategoryRepositories";
 
 interface ICategoryRequest {
-    category: string,
-    todo_sender: string
+    category: string
 }
 
 export class CreateCategoryService {
-    async execute({ category, todo_sender } : ICategoryRequest) {
+    async execute({ category } : ICategoryRequest) {
         const categoryRepositories = getCustomRepository(CategoryRepositories)
 
         const categories = await categoryRepositories.create({ 
-            category,
-            todo_sender
+            category
         })
 
         await categoryRepositories.save(categories)
