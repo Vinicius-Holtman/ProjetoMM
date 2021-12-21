@@ -10,6 +10,7 @@
   "dependencies": {
     "@types/node": "^16.11.13",
     "express": "^4.17.1",
+    "materialize-css": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
     "typeorm": "^0.2.41",
