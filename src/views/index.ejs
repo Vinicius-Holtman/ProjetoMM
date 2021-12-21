@@ -5,10 +5,11 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="../../node_modules/materialize-css/dist/css/materialize.min.css"
-    media="screen,projection" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <link rel="stylesheet" href="../../public/css/styles.css">
+
+  <link rel="stylesheet" href="/css/styles.css">
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +25,7 @@
       <li>
         <div class="user-view">
           <div class="background">
-            <img src="../../public/img/wallpaper1.jpg">
+            <img src="/img/wallpaper.jpg">
           </div>
           <a href="#"><img class="circle" src="https://avatars.githubusercontent.com/u/42218598?v=4"></a>
           <a href="#"><span class="white-text name">Vinicius Holtman</span></a>
@@ -42,29 +43,6 @@
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i
         class="material-icons">menu</i></a>
-
-        <ul id="slide-out" class="sidenav sidenav-fixed right grey darken-4">
-          <li>
-            <div class="user-view">
-              <div class="background">
-                <img src="../../public/img/wallpaper1.jpg">
-              </div>
-              <a href="#"><img class="circle" src="https://avatars.githubusercontent.com/u/42218598?v=4"></a>
-              <a href="#"><span class="white-text name">Vinicius Holtman</span></a>
-              <a href="#"><span class="white-text email">viniholtman28@gmail.com</span></a>
-            </div>
-          </li>
-          <li><a href="#!" class="white-text"><i class="material-icons white-text">wb_sunny</i>Meu dia</a></li>
-          <li><a href="#!" class="white-text"><i class="material-icons white-text">star_border</i>Importante</a></li>
-          <li><a href="#!" class="white-text"><i class="material-icons white-text">newspaper</i>Tarefas</a></li>
-          <li>
-            <div class="divider"></div>
-          </li>
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">shopping_cart</i>Compras</a>
-          </li>
-        </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i
-            class="material-icons">menu</i></a>
   </header>
 
   <main>
@@ -102,28 +80,9 @@
 
 </body>
 
-<script type="text/javascript" src="../../node_modules/materialize-css/dist/js/materialize.min.js"></script>
-<script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  document.addEventListener('DOMContentLoaded', function () {
-    M.AutoInit();
-    var elems = document.querySelectorAll('.sidenav');
-    var elemsRight = document.querySelectorAll('.sidenav-fixed');
-    var instances = M.Sidenav.init(elems, options);
-  });
-
-  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-  var collapsibleElem = document.querySelector('.collapsible');
-  var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
-
-  // Or with jQuery
-
-  $(document).ready(function () {
-    $('.sidenav').sidenav();
-  });
-
-  let data = new Date()
-  var dia = String(data.getDate())
-</script>
+<script src="/js/sidenav.js"></script>
 
 </html>
