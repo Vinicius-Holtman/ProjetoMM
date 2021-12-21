@@ -20,4 +20,4 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(router)
 
-app.listen(4000, () => console.log('Server is runnning, port: 4040'))
+app.listen(4040, () => console.log('Server is runnning, port: 4040'))

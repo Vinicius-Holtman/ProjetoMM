@@ -18,7 +18,7 @@ router.get("/category", listCategoryController.handle);
 router.get("/todo", listTodoController.handle);
 
 router.get('/', (req, res) => {
-    res.render('index')
+     res.render('index')
 })
 
 export { router }
