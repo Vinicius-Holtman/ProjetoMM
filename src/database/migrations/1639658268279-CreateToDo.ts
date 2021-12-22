@@ -25,6 +25,10 @@ export class CreateToDo1639658268279 implements MigrationInterface {
                         type: "date"
                     },
                     {
+                        name: "isActived",
+                        type: "boolean",
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"

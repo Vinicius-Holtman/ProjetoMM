@@ -11,6 +11,9 @@ export class Todo {
     
     @Column()
     description: string
+
+    @Column()
+    isActived: boolean
     
     @Column()
     data_limit: Date

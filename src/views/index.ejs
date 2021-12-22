@@ -7,8 +7,6 @@
   <!--Import materialize.css-->
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-
   <link rel="stylesheet" href="/css/styles.css">
 
   <!--Let browser know website is optimized for mobile-->
@@ -19,7 +17,6 @@
 <body class="grey darken-4">
 
   <header>
-    <!-- <nav class="top-nav grey darken-4"></nav> -->
 
     <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4">
       <li>
@@ -49,11 +46,23 @@
     <div class="row">
       <div class="col s12 m8 offset-m1 xl7 offset-xl1">
         <div class="white-text">
-          <h2>Meu Dia</h2>
+          <h2>Meu Dia <%-nome%></h2>
+          <p>
+            <%-JSON.stringify(category)%>
+          </p>
+
+          <p>
+            <%-category[0].id%> => <%-category[0].category%>
+            <br>
+            <%-category[0].created_at.getDate()%>
+            <%-category[0].created_at.getMonth() + 1%>
+            <%-category[0].created_at.getFullYear()%>
+          </p>
+
           <span>segunda-feira, 20 de dezembro</span>
         </div>
         <div>
-          <form action="#">
+          <form id="todoListItems" action="#">
             <p class="input-checkbox">
               <label>
                 <input type="checkbox" class="filled-in" checked="checked" />
@@ -82,7 +91,48 @@
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="/js/sidenav.js"></script>
+
+<script>
+
+  $.get('/todo').done(function(){
+
+  }).fail(function(){
+
+  });
+
+  axios.get('/todo')
+    .then(function (response) {
+      
+      $('#todoListItems').empty();
+
+      response.data.forEach(element => {
+        
+        let html = `
+        <p class="input-checkbox">
+          <label>
+            <input type="checkbox" class="filled-in" />
+            <span class="white-text">${element.title}</span>
+          </label>
+        </p>
+        `;
+
+        $('#todoListItems').append(html);
+
+      });
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+
+</script>
 
 </html>
