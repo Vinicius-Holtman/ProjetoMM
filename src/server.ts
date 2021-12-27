@@ -17,8 +17,6 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded({extended: true}))
 
-
-
 app.use(router)
 
 app.listen(4040, () => console.log('Server is runnning, port: 4040'))

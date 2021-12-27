@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { ListTodoService } from "../services/ListTodoService"
 
-class ListTodoController {
+export class ListTodoController {
     async handle(req: Request, res: Response) {
         const listTodoService = new ListTodoService();
 
@@ -10,5 +10,3 @@ class ListTodoController {
         return res.json(todo);
     }
 }
-
-export { ListTodoController }

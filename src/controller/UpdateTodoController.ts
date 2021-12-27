@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
 import { UpdateTodoService } from "../services/UpdateTodoService"
 
-class UpdateTodoController {
+export class UpdateTodoController {
     async handle(req: Request, res: Response) {
         const { id } = req.params;
-        const { isActived } = req.body;
+        const { isActived } = req.body === "true";
 
         const updateTodoService = new UpdateTodoService();
 
@@ -13,5 +13,3 @@ class UpdateTodoController {
         return res.json(updateTodo);
     }
 }
-
-export { UpdateTodoController }

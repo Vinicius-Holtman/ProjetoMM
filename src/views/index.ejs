@@ -25,18 +25,17 @@
             <img src="/img/wallpaper.jpg">
           </div>
           <a href="#"><img class="circle" src="https://avatars.githubusercontent.com/u/42218598?v=4"></a>
-          <a href="#"><span class="white-text name">Vinicius Holtman</span></a>
-          <a href="#"><span class="white-text email">viniholtman28@gmail.com</span></a>
+          <a href="#"><span class="white-text name"><%= user[0].name %> </span></a>
+          <a href="#"><span class="white-text email"><%= user[0].email %> </span></a>
         </div>
       </li>
-      <li><a href="#!" class="white-text"><i class="material-icons white-text">wb_sunny</i>Meu dia</a></li>
-      <li><a href="#!" class="white-text"><i class="material-icons white-text">star_border</i>Importante</a></li>
-      <li><a href="#!" class="white-text"><i class="material-icons white-text">newspaper</i>Tarefas</a></li>
-      <li>
-        <div class="divider"></div>
-      </li>
-      <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">shopping_cart</i>Compras</a>
-      </li>
+      <div>
+
+        <li><a href="#!" class="white-text"><i class="material-icons white-text">wb_sunny</i><%= category[0].category %></a></li>
+        <li><a href="#!" class="white-text"><i class="material-icons white-text">star_border</i><%= category[1].category %></a></li>
+        <li><a href="#!" class="white-text"><i class="material-icons white-text">newspaper</i><%= category[2].category %></a></li>
+        <li><a href="#!" class="white-text"><i class="material-icons white-text">shopping_cart</i><%= category[3].category %></a></li>
+      </div>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i
         class="material-icons">menu</i></a>
@@ -46,42 +45,12 @@
     <div class="row">
       <div class="col s12 m8 offset-m1 xl7 offset-xl1">
         <div class="white-text">
-          <h2>Meu Dia <%-nome%></h2>
-          <p>
-            <%-JSON.stringify(category)%>
-          </p>
+          <h2><%=category[0].category%></h2>
 
-          <p>
-            <%-category[0].id%> => <%-category[0].category%>
-            <br>
-            <%-category[0].created_at.getDate()%>
-            <%-category[0].created_at.getMonth() + 1%>
-            <%-category[0].created_at.getFullYear()%>
-          </p>
-
-          <span>segunda-feira, 20 de dezembro</span>
+          <span><%= dataAtual %> </span>
         </div>
         <div>
-          <form id="todoListItems" action="#">
-            <p class="input-checkbox">
-              <label>
-                <input type="checkbox" class="filled-in" checked="checked" />
-                <span class="white-text">Comprar Pão</span>
-              </label>
-            </p>
-            <p class="input-checkbox">
-              <label>
-                <input type="checkbox" class="filled-in" checked="checked" />
-                <span class="white-text">Beber Água</span>
-              </label>
-            </p>
-            <p class="input-checkbox">
-              <label>
-                <input type="checkbox" class="filled-in" checked="checked" />
-                <span class="white-text">Almoçar</span>
-              </label>
-            </p>
-          </form>
+          <form id="todoListItems" action="#"></form>
         </div>
       </div>
     </div>
@@ -95,6 +64,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="/js/sidenav.js"></script>
+<script src="/js/actually.js"></script>
 
 <script>
 
@@ -129,10 +99,27 @@
       // handle error
       console.log(error);
     })
-    .then(function () {
-      // always executed
-    });
 
+// axios.get('/category')
+//     .then(function (response) {
+      
+//       $('#categoryListItems').empty();
+
+//       response.data.forEach(element => {
+        
+//         let html = `
+
+//         <li><a href="#!" class="white-text"><i class="material-icons white-text">wb_sunny</i>${element.category}</a></li>`;
+
+//         $('#categoryListItems').append(html);
+
+//       });
+
+//     })
+//     .catch(function (error) {
+//       // handle error
+//       console.log(error);
+//     })
 </script>
 
 </html>

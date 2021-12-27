@@ -9,6 +9,14 @@ export class CreateCategoryService {
     async execute({ category } : ICategoryRequest) {
         const categoryRepositories = getCustomRepository(CategoryRepositories)
 
+        const categoryAlreadyExists = await categoryRepositories.findOne({
+            category
+        })
+
+        if(categoryAlreadyExists) {
+            throw new Error("Category already exists, inform another category");
+        }
+
         const categories = await categoryRepositories.create({ 
             category
         })
