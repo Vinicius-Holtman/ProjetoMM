@@ -8,19 +8,21 @@ interface ITodoUpdate {
 }
 
 export class UpdateTodoService {
-    private todoRepository: Repository<Todo>
+    // private todoRepository: Repository<Todo>
 
-    constructor() {
-        this.todoRepository = getCustomRepository(TodoRepositories);
-    }
+    // constructor() {
+    //     this.todoRepository = getCustomRepository(TodoRepositories);
+    // }
 
     async update({ id, isActived }: ITodoUpdate) {
-        await this.todoRepository.createQueryBuilder()
+        const todoRepository = getCustomRepository(TodoRepositories);
+
+        await todoRepository.createQueryBuilder()
         .update(Todo)
         .set({ isActived })
         .where("id = :id", {
-            id,
-        })  
+            id, isActived
+        })
         .execute();
     }
 }

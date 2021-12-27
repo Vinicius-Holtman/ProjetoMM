@@ -1,26 +1,30 @@
-// import { getCustomRepository, Repository } from "typeorm";
-// import { UserRepositories } from "../repositories/UserRepositories";
-// import { User } from "../entities/User"
+import { getCustomRepository, getRepository, Repository } from "typeorm";
+import { UserRepositories } from "../repositories/UserRepositories";
+import { User } from "../entities/User"
 
-// interface ITodoUpdate {
-//     id: string,
-//     isActived: boolean,
-// }
+interface IUserUpdate {
+    user_id: string,
+    name: string,
+    email: string,
+    password: string
+}
 
-// export class UpdateTodoService {
-//     private userRepository: Repository<User>
+export class UpdateUserService {
+    // private userRepository: Repository<User>
 
-//     constructor() {
-//         this.userRepository = getCustomRepository(UserRepositories);
-//     }
+    // constructor() {
+    //     const userRepository = getRepository(UserRepositories);
+    // }
 
-//      async update({ user_id,  }: ITodoUpdate) {
-//         await this.userRepository.createQueryBuilder()
-//         .update(User)
-//         .set({ isActived })
-//         .where("id = :id", {
-//             user_id,
-//         })  
-//         .execute();
-//     }
-// }
+    async update({ user_id, name, email, password }: IUserUpdate) {
+        const userRepository = getCustomRepository(UserRepositories);
+
+        await userRepository.createQueryBuilder()
+        .update(User)
+        .set({ name, email, password })
+        .where("user_id = :user_id", {
+            user_id
+        })  
+        .execute();
+    }
+}

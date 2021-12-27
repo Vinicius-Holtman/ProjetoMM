@@ -5,13 +5,14 @@ import { CreateUserController } from './controller/CreateUserController'
 import { DeleteUserController } from './controller/DeleteUserController'
 import { DeleteTodoController } from './controller/DeleteTodoController'
 import { DeleteCategoryController } from './controller/DeleteCategoryController'
-// import { UpdateTodoService } from './services/UpdateTodoService'
-
 import { ListCategoryController } from './controller/ListCategoryController'
 import { ListTodoController } from './controller/ListTodoController'
 import { ListUserController } from './controller/ListUserController'
+import { UpdateTodoService } from './services/UpdateTodoService'
+import { UpdateUserService } from './services/UpdateUserService'
 
 const router = Router()
+
 // Create Entities
 const createCategoryController = new CreateCategoryController()
 const createTodoController = new CreateTodoController()
@@ -28,22 +29,29 @@ const deleteTodoController = new DeleteTodoController()
 const deleteCategoryController = new DeleteCategoryController()
 
 // Update Entities
+const updateTodoService = new UpdateTodoService()
+const updateUserService = new UpdateUserService()
 
-// const updateTodoService = new UpdateTodoService()
-
+// Routes for create
 router.post("/category", createCategoryController.handle);
 router.post("/todo", createTodoController.handle);
 router.post("/user", createUserController.handle);
 
-// router.put("/todo/:id", updateTodoService.update);
+// Routes for update
+router.put("/todo/:id", updateTodoService.update);
+router.put("/user/:user_id", updateUserService.update);
+
+// Routes for delete
 router.delete("/user/:user_id", deleteUserController.handle);
 router.delete("/todo/:id", deleteTodoController.handle);
 router.delete("/category/:id", deleteCategoryController.handle);
 
+// Routes for list
 router.get("/category", listCategoryController.handle);
 router.get("/todo", listTodoController.handle);
 router.get("/user", listUserController.handle);
 
+// Teste para o front end
 import { ListCategoryService } from './services/ListCategoryService'
 import { ListUserService } from './services/ListUserService'
 

@@ -8,7 +8,7 @@ export class UpdateTodoController {
 
         const updateTodoService = new UpdateTodoService();
 
-        const updateTodo = await updateTodoService.update({id, isActived});
+        const updateTodo = await updateTodoService.update({ id, isActived });
 
         return res.json(updateTodo);
     }
