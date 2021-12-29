@@ -10,6 +10,7 @@ import { ListTodoController } from './controller/ListTodoController'
 import { ListUserController } from './controller/ListUserController'
 import { UpdateTodoService } from './services/UpdateTodoService'
 import { UpdateUserService } from './services/UpdateUserService'
+import { LoginUserController } from './controller/LoginUserController'
 
 const router = Router()
 
@@ -32,6 +33,9 @@ const deleteCategoryController = new DeleteCategoryController()
 const updateTodoService = new UpdateTodoService()
 const updateUserService = new UpdateUserService()
 
+// Render view
+const loginUserController = new LoginUserController()
+
 // Routes for create
 router.post("/category", createCategoryController.handle);
 router.post("/todo", createTodoController.handle);
@@ -50,25 +54,6 @@ router.delete("/category/:id", deleteCategoryController.handle);
 router.get("/category", listCategoryController.handle);
 router.get("/todo", listTodoController.handle);
 router.get("/user", listUserController.handle);
-
-// Teste para o front end
-import { ListCategoryService } from './services/ListCategoryService'
-import { ListUserService } from './services/ListUserService'
-
-router.get('/', async (req, res) => {
-     const listCategoryService = new ListCategoryService();
-     const category = await listCategoryService.execute();
-
-     const userRepositories = new ListUserService()
-     const user = await userRepositories.execute()
-
-     var data = new Date();
-     var dia = String(data.getDate()).padStart(2, '0');
-     var mes = String(data.getMonth() + 1).padStart(2, '0');
-     var ano = data.getFullYear();
-     const dataAtual = `${dia} - ${mes} - ${ano}`
-
-     res.render('index', {category, user, dataAtual })
-})
+router.post("/user/authenticated", loginUserController.handle)
 
 export { router }

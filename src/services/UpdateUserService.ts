@@ -24,7 +24,7 @@ export class UpdateUserService {
         .set({ name, email, password })
         .where("user_id = :user_id", {
             user_id
-        })  
+        })
         .execute();
     }
 }

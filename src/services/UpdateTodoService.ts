@@ -21,7 +21,7 @@ export class UpdateTodoService {
         .update(Todo)
         .set({ isActived })
         .where("id = :id", {
-            id, isActived
+            id
         })
         .execute();
     }
