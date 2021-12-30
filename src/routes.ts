@@ -8,8 +8,8 @@ import { DeleteCategoryController } from './controller/DeleteCategoryController'
 import { ListCategoryController } from './controller/ListCategoryController'
 import { ListTodoController } from './controller/ListTodoController'
 import { ListUserController } from './controller/ListUserController'
-import { UpdateTodoService } from './services/UpdateTodoService'
-import { UpdateUserService } from './services/UpdateUserService'
+import { UpdateTodoController } from './controller/UpdateTodoController'
+import { UpdateUserController } from './controller/UpdateUserController'
 import { LoginUserController } from './controller/LoginUserController'
 
 const router = Router()
@@ -30,8 +30,8 @@ const deleteTodoController = new DeleteTodoController()
 const deleteCategoryController = new DeleteCategoryController()
 
 // Update Entities
-const updateTodoService = new UpdateTodoService()
-const updateUserService = new UpdateUserService()
+const updateTodoController = new UpdateTodoController()
+const updateUserController = new UpdateUserController()
 
 // Render view
 const loginUserController = new LoginUserController()
@@ -42,8 +42,8 @@ router.post("/todo", createTodoController.handle);
 router.post("/user", createUserController.handle);
 
 // Routes for update
-router.put("/todo/:id", updateTodoService.update);
-router.put("/user/:user_id", updateUserService.update);
+router.put("/todo/:id", updateTodoController.handle);
+router.put("/user/:user_id", updateUserController.handle);
 
 // Routes for delete
 router.delete("/user/:user_id", deleteUserController.handle);
@@ -54,6 +54,6 @@ router.delete("/category/:id", deleteCategoryController.handle);
 router.get("/category", listCategoryController.handle);
 router.get("/todo", listTodoController.handle);
 router.get("/user", listUserController.handle);
-router.post("/user/authenticated", loginUserController.handle)
+router.get("/user/authenticated", loginUserController.handle)
 
 export { router }

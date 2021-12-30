@@ -1,6 +1,7 @@
 import { getCustomRepository, Repository } from "typeorm";
 import { TodoRepositories } from "../repositories/TodoRepositories";
 import { Todo } from "../entities/Todo"
+import console from "console";
 
 interface ITodoUpdate {
     id: string,
@@ -8,11 +9,6 @@ interface ITodoUpdate {
 }
 
 export class UpdateTodoService {
-    // private todoRepository: Repository<Todo>
-
-    // constructor() {
-    //     this.todoRepository = getCustomRepository(TodoRepositories);
-    // }
 
     async update({ id, isActived }: ITodoUpdate) {
         const todoRepository = getCustomRepository(TodoRepositories);
@@ -24,5 +20,13 @@ export class UpdateTodoService {
             id
         })
         .execute();
+
+        const todo =  await todoRepository.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        return todo;
     }
 }

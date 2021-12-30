@@ -4,7 +4,7 @@ import { UpdateUserService } from "../services/UpdateUserService"
 export class UpdateUserController {
     async handle(req: Request, res: Response) {
         const { user_id } = req.params;
-        const { name, email, password } = req.body
+        const { name, email, password } = req.body;
 
         const updateUserService = new UpdateUserService();
 

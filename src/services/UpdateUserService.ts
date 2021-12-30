@@ -10,11 +10,6 @@ interface IUserUpdate {
 }
 
 export class UpdateUserService {
-    // private userRepository: Repository<User>
-
-    // constructor() {
-    //     const userRepository = getRepository(UserRepositories);
-    // }
 
     async update({ user_id, name, email, password }: IUserUpdate) {
         const userRepository = getCustomRepository(UserRepositories);
@@ -26,5 +21,11 @@ export class UpdateUserService {
             user_id
         })
         .execute();
+
+        return await userRepository.findOne({
+            where: {
+                user_id: user_id
+            }
+        });
     }
 }
