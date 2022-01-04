@@ -1,8 +1,10 @@
-import express from 'express';
 import 'reflect-metadata'
-import path from 'path';
+import express from 'express';
 import { router }  from './routes'
 import { createServer } from 'http';
+import path from 'path';
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocs from './swagger.json'
 
 import './database'
 
@@ -11,6 +13,7 @@ const app = express()
 app.use(express.json())
 app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))

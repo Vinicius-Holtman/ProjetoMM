@@ -1,7 +1,6 @@
 import { getCustomRepository, Repository } from "typeorm";
 import { TodoRepositories } from "../repositories/TodoRepositories";
 import { Todo } from "../entities/Todo"
-import console from "console";
 
 interface ITodoUpdate {
     id: string,

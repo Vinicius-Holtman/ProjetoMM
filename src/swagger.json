@@ -1,0 +1,476 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Projeto MM",
+        "description": "Essa documentação tem por finalidade auxilar no manuseio das requisições do projeto MM",
+        "contact": {
+            "email": "vinicius.holt.dev@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:4040/",
+            "description": "API para teste"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "post": {
+                "summary": "Cadastro de usuários",
+                "description": "Essa rota está resonsável pelo cadastro de usuários",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Vinicius Holtman",
+                                        "email": "cantato@gmail.com",
+                                        "password": "teste"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "User Already Exists!"
+                    },
+                    "200": {
+                        "description": "OK, User Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Busca de usuários", 
+                "description": "Busca de todos os usuários cadastros",
+                "tags": ["User"],
+                "parameters": [{}],
+                "responses": {
+                    "200": {
+                        "description": "OK, User Lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{user_id}": {
+            "delete": {
+                "summary": "Deleção de usuário",
+                "description": "Essa rota está resonsável por deletar um usuário",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "Valor do user_id para deleção do usuário",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, User Deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "put": {
+                "summary": "Atualização de usuário",
+                "description": "Essa rota está responsável por atualizar usuários",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "Valor do user_id para atualizar um usuário",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Vinicius Holtman",
+                                        "email": "cantato@gmail.com",
+                                        "password": "teste"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK, User Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/category": {
+            "post": {
+                "summary": "Cadastro de categoria",
+                "description": "Essa rota está resonsável pelo cadastro de categorias",
+                "tags": ["Category"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Category"
+                            },
+                            "examples": {
+                                "category": {
+                                    "value": {
+                                        "category": "Importante"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Category Already Exists!"
+                    },
+                    "200": {
+                        "description": "OK, Category Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "summary": "Busca de categorias", 
+                "description": "Busca de todas as categorias",
+                "tags": ["Category"],
+                "parameters": [{}],
+                "responses": {
+                    "200": {
+                        "description": "OK, Category Lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "delete": {
+                "summary": "Deleção de categoria",
+                "description": "Essa rota está resonsável por deletar uma categoria",
+                "tags": ["Category"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Valor do id para deleção de uma categoria",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, Category Deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "put": {
+                "summary": "Atualização de categorias",
+                "description": "Essa rota está responsável por atualizar categorias",
+                "tags": ["Category"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Valor do id para atualizar uma categoria",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Category"
+                            },
+                            "examples": {
+                                "category": {
+                                    "value": {
+                                        "category": "Terefas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK, Category Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/todo": {
+            "post": {
+                "summary": "Cadastro de To Do",
+                "description": "Essa rota está resonsável pelo cadastro de To Do",
+                "tags": ["Todo"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Todo"
+                            },
+                            "examples": {
+                                "todo": {
+                                    "value": {
+                                        "title": "Tirar o lixo",
+                                        "description": "Deverá tirar o lixo do banheiro às 8 horas",
+                                        "isActived": true,
+                                        "data_limit": "2022-01-03"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Todo Already Exists!"
+                    },
+                    "200": {
+                        "description": "OK, ToDo Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Todo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todos": {
+            "get": {
+                "summary": "Busca de To Do", 
+                "description": "Busca de todos os To Do",
+                "tags": ["Todo"],
+                "parameters": [{}],
+                "responses": {
+                    "200": {
+                        "description": "OK, To Do Lists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Todo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todo/{id}": {
+            "delete": {
+                "summary": "Deleção de To Do",
+                "description": "Essa rota está resonsável por deletar um To Do",
+                "tags": ["Todo"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Valor do id para deleção de uma To Do",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, Category Deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todos/{id}": {
+            "put": {
+                "summary": "Atualização de To Do",
+                "description": "Essa rota está responsável por atualizar To Do",
+                "tags": ["Todo"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Valor do id para atualizar se o To Do está feito ou não",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Todo"
+                            },
+                            "examples": {
+                                "todo": {
+                                    "value": {
+                                        "isActived": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK, Todo Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Todo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Category": {
+                "type":"object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Todo": {
+                "type":"object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "isActived": {
+                        "type": "boolean"
+                    },
+                    "data_limit": {
+                        "type": "Date"
+                    }
+                }
+            }
+        }
+    }
+}
