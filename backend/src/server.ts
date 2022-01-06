@@ -2,8 +2,10 @@ import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocs from './swagger.json'
 import { router } from './routes'
+import cors from 'cors'
 
 const app = express()
+app.use(cors())
 
 import './database'
 
