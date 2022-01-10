@@ -29,6 +29,10 @@ export class CreateToDo1639658268279 implements MigrationInterface {
                         type: "boolean",
                     },
                     {
+                        name: "category_sender",
+                        type: "uuid"
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
@@ -38,6 +42,16 @@ export class CreateToDo1639658268279 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()"
                     }
+                ],
+                foreignKeys: [
+                    { 
+                       name: "FKCategoryTodo",
+                       referencedTableName: "categories",
+                       referencedColumnNames: ["id"],
+                       columnNames: ["category_sender"],
+                       onDelete: "CASCADE",
+                       onUpdate: "CASCADE"
+                    }
                 ]
             })
         )
@@ -46,5 +60,4 @@ export class CreateToDo1639658268279 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("todo")
     }
-
 }

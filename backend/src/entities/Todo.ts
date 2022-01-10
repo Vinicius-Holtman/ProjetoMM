@@ -1,5 +1,6 @@
-import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
+import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToOne} from "typeorm";
 import { v4 as uuid} from "uuid";
+import { Category } from "./Category";
 
 @Entity("todo")
 export class Todo {
@@ -14,6 +15,13 @@ export class Todo {
 
     @Column()
     isActived: boolean
+
+    @Column()
+    category_sender: string
+
+    @JoinColumn({name: "category_sender"})
+    @ManyToOne(() => Category)
+    category: Category
     
     @Column()
     data_limit: Date

@@ -31,15 +31,6 @@ async function getTodo() {
         })
 }
 
-async function getCategories() {
-    try {
-        const responseCategory = await api.get("/categories")
-        //console.log(responseCategory)
-    } catch (error) {
-        console.error(`Ocorreu um erro: ${error}`)
-    }
-}
-
 function onCheckTodo(id) {
     api.put('/todos/' + id, { "isActived": true })
         .then((response) => {
@@ -92,6 +83,4 @@ jQuery(function($){
             console.log(error);
         });
     });
-    
-
 });
